@@ -1,0 +1,16 @@
+{% extends 'market/base.html' %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb"> Remove Item from Market </legend>
+                <h2>Do you want to take remove {{ object.item_name }} from the market?</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Remove it!</button>
+                <a class="btn btn-outline-secondary" href="{% url 'item-detail' object.id %}">Cancel, don't remove</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

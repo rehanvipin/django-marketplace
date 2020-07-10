@@ -1,0 +1,24 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+    <h1>Welcome to the Market</h1>
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ object.seller.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'seller-items' object.seller %}">{{ object.seller }}</a>
+                <small class="text-muted">{{ object.upload_date }}</small>
+                <div>
+                    {% if object.seller == user %}
+                    <a class="btn btn-secondary btm-sm mt-1 mb-1" href="{% url 'item-update' object.id %}">Update information</a>
+                    <a class="btn btn-danger btm-sm mt-1 mb-1" href="{% url 'item-delete' object.id %}">Remove item</a>
+                    {% endif %}
+                </div>
+            </div>
+            <h2 class="article-title">{{ object.item_name }}</h2>
+            <p class="article-content">{{object.description}}</p>
+            <span>{{object.votes}}</span>
+        </div>
+    </article>
+        
+{% endblock content %}
